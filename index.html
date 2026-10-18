@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Hamada | Video Editor — مونتاج ريلز وفيديوهات قصيرة هادفة</title>
+
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description"
+    content="بورتفوليو أحمد حمادة (Ahmed Hamada) — Video Editor متخصص في مونتاج الفيديوهات القصيرة والريلز لصناع المحتوى وأصحاب البراندات الشخصية، مع اهتمام عميق بالهدف والرسالة والجمهور.">
+  <meta name="keywords"
+    content="Ahmed Hamada, احمد حمادة, مونتاج فيديو, Video Editor, ريلز, تيك توك, شورتس, مونتاج احترافي, كتابة سكريبت, افكار محتوى">
+  <meta name="author" content="Ahmed Hamada">
+  <meta name="theme-color" content="#0B0F17">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ahmed Hamada | Video Editor — مش مجرد مونتاج. محتوى معمول لهدف.">
+  <meta property="og:description"
+    content="بساعد صناع المحتوى وأصحاب البراندات الشخصية يحوّلوا خاماتهم لفيديوهات جذابة من خلال مونتاج احترافي واهتمام بالرسالة والجمهور والهدف.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_EG">
+
+  <!-- Google Fonts: Cairo & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ========================================================
+       Cinematic Background Layer (Aurora + Particles + Grid + Grain)
+       ======================================================== -->
+  <div class="cinematic-bg" aria-hidden="true">
+    <!-- Aurora Gradient Orbs (CSS animated + mouse parallax) -->
+    <div class="aurora-orb aurora-orb--1" data-depth="0.02"></div>
+    <div class="aurora-orb aurora-orb--2" data-depth="0.035"></div>
+    <div class="aurora-orb aurora-orb--3" data-depth="0.015"></div>
+    <div class="aurora-orb aurora-orb--4" data-depth="0.025"></div>
+    <div class="aurora-orb aurora-orb--5" data-depth="0.04"></div>
+
+    <!-- Animated Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Particle System Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- Film Grain Canvas -->
+    <canvas id="grain-canvas" class="grain-canvas"></canvas>
+
+    <!-- Horizontal Cinematic Scan Line -->
+    <div class="scan-line"></div>
+
+    <!-- Vignette Edge Darkening -->
+    <div class="vignette-overlay"></div>
+  </div>
+
+
+  <!-- ========================================================
+       Header & Navigation (صغير وواضح)
+       ======================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-wrap">
+
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" aria-label="الصفحة الرئيسية — Ahmed Hamada">
+        <div class="brand-icon">
+          <img src="assets/logo.jpg" alt="Ahmed Hamada Logo" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Ahmed Hamada</span>
+          <span class="brand-tag">Content Growth Partner</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="القائمة الرئيسية">
+        <a href="#hero" class="nav-link active">الرئيسية</a>
+        <a href="#works" class="nav-link">معرض الأعمال</a>
+        <a href="#services" class="nav-link">الخدمات</a>
+        <a href="#beyond" class="nav-link">أكثر من مونتاج</a>
+        <a href="#about" class="nav-link">عني</a>
+        <a href="#contact" class="nav-link">تواصل</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">ابدأ مشروعك</a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="تبديل القائمة للموبايل" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-label="قائمة الموبايل">
+    <a href="#hero" class="mobile-nav-link">الرئيسية</a>
+    <a href="#works" class="mobile-nav-link">معرض الأعمال</a>
+    <a href="#services" class="mobile-nav-link">الخدمات</a>
+    <a href="#beyond" class="mobile-nav-link">أكثر من مونتاج</a>
+    <a href="#about" class="mobile-nav-link">عني</a>
+    <a href="#contact" class="mobile-nav-link">تواصل معي</a>
+    <div style="margin-top: 14px;">
+      <a href="https://wa.me/201280370806?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%AA%D9%81%D9%88%D9%84%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%AA%D9%83%D9%84%D9%85%20%D9%85%D8%B9%D8%A7%D9%83%20%D8%B9%D9%86%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC."
+        target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: 100%;">
+        تواصل عبر واتساب
+      </a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ========================================================
+         Hero Section (مختصر مع زري المشاهدة والتواصل وصورة شخصية متحركة)
+         ======================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+
+        <!-- Hero Text -->
+        <div class="hero-content reveal">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>شريك تطوير المحتوى ومضاعفة المبيعات • متاح لمشاريع جديدة</span>
+          </div>
+
+          <h1 class="hero-title">
+            مش مجرد مونتاج.<br>
+            <span class="highlight-yellow">محتوى معمول لهدف.</span>
+          </h1>
+
+          <p class="hero-desc">
+            بساعد صناع المحتوى وأصحاب البراندات الشخصية يحوّلوا خاماتهم لفيديوهات جذابة من خلال مونتاج احترافي واهتمام عميق بالرسالة والجمهور والهدف من كل محتوى.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#works" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>مشاهدة الأعمال</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>تواصل معي</span>
+            </a>
+          </div>
+
+          <!-- Feature Focus Points (Clean & Free of Clutter) -->
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>فهم عميق للهدف والجمهور</span>
+            </div>
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>سرد بصري سلس وجذاب</span>
+            </div>
+            <div class="highlight-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>تطوير وصياغة الأفكار</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Personal Portrait with Cinematic Video Editor HUD -->
+        <div class="hero-visual-col reveal reveal-delay-2">
+          <div class="hero-avatar-wrapper">
+            <div class="avatar-ambient-glow"></div>
+
+            <!-- Floating Video Editor HUD Chip: Live REC + Timecode -->
+            <div class="editor-hud-chip chip-rec" aria-hidden="true">
+              <span class="rec-dot"></span>
+              <span class="hud-label">REC</span>
+              <span class="hud-timecode live-timecode-val">00:01:24:18</span>
+            </div>
+
+            <!-- Floating Video Editor HUD Chip: Video Software & Audio Wave -->
+            <div class="editor-hud-chip chip-specs" aria-hidden="true">
+              <div class="hud-tools">
+                <span class="tool-tag tag-pr" title="Adobe Premiere Pro">Pr</span>
+                <span class="tool-tag tag-ae" title="Adobe After Effects">Ae</span>
+                <span class="tool-tag tag-dv" title="DaVinci Resolve">Dv</span>
+              </div>
+              <div class="hud-wave" title="Audio Spectrum Visualizer">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+              </div>
+            </div>
+
+            <!-- Floating Video Editor HUD Chip: Resolution & Format -->
+            <div class="editor-hud-chip chip-res" aria-hidden="true">
+              <span class="res-tag">4K 60FPS</span>
+              <span class="res-sep">•</span>
+              <span class="res-tag">9:16 REELS</span>
+            </div>
+
+            <div class="hero-avatar-frame">
+              <img src="assets/ahmed-hamada.jpg" alt="Ahmed Hamada — Video Editor" loading="eager">
+            </div>
+
+            <div class="hero-avatar-badge">
+              <span class="pulse-dot"></span>
+              <span class="badge-text">متاح للعمل على مشاريع جديدة</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================================
+           Video Editor Sequence Timeline Bar (DaVinci/Premiere Style)
+           ======================================================== -->
+      <div class="container hero-timeline-wrap reveal reveal-delay-3" aria-hidden="true">
+        <div class="timeline-panel">
+          <div class="timeline-panel-head">
+            <div class="timeline-head-left">
+              <span class="rec-status-dot"></span>
+              <span class="seq-title">SEQUENCE 01: HIGH_RETENTION_REEL.prproj</span>
+              <span class="seq-specs">4K UHD • 59.94 FPS • DCI-P3 COLOR</span>
+            </div>
+            <div class="timeline-head-right">
+              <span class="tc-label">PLAYHEAD:</span>
+              <span class="tc-display live-timecode-val">00:01:24:18</span>
+            </div>
+          </div>
+
+          <div class="timeline-editor-tracks">
+            <!-- Timecode Ruler -->
+            <div class="timeline-ruler">
+              <span class="ruler-mark">00:00:00</span>
+              <span class="ruler-mark">00:00:15</span>
+              <span class="ruler-mark">00:00:30</span>
+              <span class="ruler-mark">00:00:45</span>
+              <span class="ruler-mark">00:01:00</span>
+              <span class="ruler-mark">00:01:15</span>
+            </div>
+
+            <!-- Video Track V1 with Retention Blocks -->
+            <div class="timeline-track-v">
+              <div class="track-id">V1</div>
+              <div class="track-clips">
+                <div class="clip-block clip-hook">
+                  <span class="clip-title">01_HOOK (0-3s)</span>
+                  <span class="clip-desc">Pattern Interrupt</span>
+                </div>
+                <div class="clip-block clip-story">
+                  <span class="clip-title">02_STORY_PACING</span>
+                  <span class="clip-desc">Dynamic B-Roll & Zooms</span>
+                </div>
+                <div class="clip-block clip-typography">
+                  <span class="clip-title">03_ENGAGEMENT</span>
+                  <span class="clip-desc">Kinetic Captions & SFX</span>
+                </div>
+                <div class="clip-block clip-cta">
+                  <span class="clip-title">04_CTA</span>
+                  <span class="clip-desc">High Conversion</span>
+                </div>
+
+                <!-- Playhead Scrubbing Laser -->
+                <div class="timeline-playhead">
+                  <div class="playhead-top"></div>
+                  <div class="playhead-laser-line"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Audio Track A1 with Sound Design Tag -->
+            <div class="timeline-track-a">
+              <div class="track-id">A1</div>
+              <div class="track-audio-wave">
+                <div class="audio-waveform-line"></div>
+                <span class="audio-tag">SFX + Voice Enhancement + Mastered Loudness (-14 LUFS)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Selected Work Section (معرض الأعمال مباشرة بعد الواجهة الرئيسية)
+         ======================================================== -->
+    <section class="section" id="works">
+      <div class="container">
+
+        <div class="text-center reveal">
+          <span class="section-tag">معرض النماذج</span>
+          <h2 class="section-title">أعمال مختارة</h2>
+          <p class="section-desc">
+            نماذج مونتاج حقيقية — اضغط على أي نموذج للمشاهدة المباشرة بجودة عالية.
+          </p>
+        </div>
+
+        <!-- Dynamic Projects Grid (6 Videos: Vertical Reels & 16:9 Long Video) -->
+        <div class="work-grid" id="projects-container">
+          <!-- Rendered via projects-data.js & main.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Services Section (3 مسارات: Content Marketing / Strategy / Video)
+         ======================================================== -->
+    <section class="section" id="services">
+      <div class="container">
+
+        <div class="text-center reveal">
+          <span class="section-tag">ماذا أقدم؟</span>
+          <h2 class="section-title">مش مجرد اديتور — <span class="highlight-yellow">شريك نمو محتواك</span></h2>
+          <p class="section-desc">
+            بساعدك تحوّل خبرتك وأفكارك لمحتوى يبني براندك ويضاعف مبيعاتك — من التخطيط الاستراتيجي وحتى الفيديو الجاهز للنشر.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Service 1: Content Marketing -->
+          <div class="service-card service-card--featured reveal reveal-delay-1">
+            <div class="service-card-top-badge">الأكثر طلباً</div>
+            <div class="service-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Content Marketing</h3>
+            <p class="service-desc">
+              بنساعدك تحوّل خبرتك وأفكارك لمحتوى هادف، من خلال تخطيط المحتوى، وتطوير الأفكار، وصناعة فيديوهات جذابة، بما يدعم بناء البراند الشخصي وتعزيز التواصل مع الجمهور.
+            </p>
+            <ul class="service-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تخطيط وإدارة كاملة لمحتوى المنصات</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تطوير أفكار إبداعية تخدم رسالتك</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>صناعة فيديوهات تبني حضور قوي وتجذب الجمهور</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>ربط المحتوى بهدف تجاري واضح ومحدد</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Service 2: Content Strategy -->
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Content Strategy</h3>
+            <p class="service-desc">
+              بنبني استراتيجية محتوى تناسب هويتك وأهدافك، من خلال تحديد محاور المحتوى، وفهم الجمهور المستهدف، وتطوير أفكار إبداعية تساعدك على تقديم خبرتك بشكل مميز وبناء حضور قوي لبراندك الشخصي.
+            </p>
+            <ul class="service-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تحديد محاور وركائز البراند الشخصي</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تحليل الجمهور المستهدف وتصميم رسالة واضحة</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>خطة محتوى شهرية قابلة للتنفيذ والقياس</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>أفكار إبداعية تميزك عن المنافسين</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Service 3: Video Editing -->
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <h3 class="service-title">Video Editing</h3>
+            <p class="service-desc">
+              مونتاج احترافي للريلز والشورتس والفيديوهات القصيرة يشد الانتباه من الثانية الأولى — بانتقالات سلسة وتنسيق بصري يخدم هدفك التجاري.
+            </p>
+            <ul class="service-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تقطيع محكم وبدايات قوية (Hooks)</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>مؤثرات بصرية وصوتية تعزز الرسالة</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>تصدير بجودة عالية لكل المنصات</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>كابشن وترجمة وCTA داخل الفيديو</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Beyond Editing Section (فقرة قصيرة: أكثر من مجرد مونتاج)
+         ======================================================== -->
+    <section class="section beyond-section" id="beyond">
+      <div class="container">
+
+        <div class="text-center reveal">
+          <span class="section-tag">فلسفة العمل</span>
+          <h2 class="section-title">أكثر من مجرد مونتاج.</h2>
+          <p class="section-desc">
+            قبل أي خطوة في المونتاج، بهتم بفهم الهدف من الفيديو: مين جمهورك؟ وإيه الرسالة المطلوب توصيلها؟ لأن الفيديو الناجح مش مجرد لقطات متتالية، هو رسالة واضحة بتبني ثقة حقيقية مع المشاهد وتخدم أهدافك.
+          </p>
+        </div>
+
+        <!-- The 3 Pillars -->
+        <div class="pillars-grid">
+
+          <!-- Pillar 1: الهدف -->
+          <div class="pillar-card reveal reveal-delay-1">
+            <span class="pillar-number">01</span>
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <h3 class="pillar-title">الهدف (The Goal)</h3>
+            <p class="pillar-desc">
+              تحديد النتيجة التي تريد تحقيقها من الفيديو بوضوح، لنوجه كل لقطة وانتقال لخدمة هذا الهدف دون تشتيت.
+            </p>
+          </div>
+
+          <!-- Pillar 2: الجمهور -->
+          <div class="pillar-card reveal reveal-delay-2">
+            <span class="pillar-number">02</span>
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">الجمهور (The Audience)</h3>
+            <p class="pillar-desc">
+              مخاطبة اهتمامات جمهورك بأسلوب وسرعة تناسب عادات مشاهدتهم وتضمن استمرارهم في المتابعة حتى النهاية.
+            </p>
+          </div>
+
+          <!-- Pillar 3: الرسالة -->
+          <div class="pillar-card reveal reveal-delay-3">
+            <span class="pillar-number">03</span>
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">الرسالة (The Message)</h3>
+            <p class="pillar-desc">
+              التركيز على الفكرة الأساسية وتقديمها بأسلوب نقي ومباشر يرسخ في ذهن المشاهد بعد انتهاء الفيديو.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         About Section (نبذة مختصرة عن أحمد مع صورة STORY)
+         ======================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+
+        <div class="about-box reveal">
+
+          <!-- Story Card with STORY.jpeg -->
+          <div class="about-avatar-card">
+            <div class="story-preview-wrap">
+              <img src="assets/STORY.jpeg" alt="قصتي في صناعة المحتوى والمونتاج — Ahmed Hamada" class="story-img">
+              <span class="story-overlay-tag">Story & Journey</span>
+            </div>
+            <h3 class="about-name" style="margin-top: 16px;">Ahmed Hamada</h3>
+            <span class="about-role-badge">Video Editor</span>
+
+            <ul class="about-meta-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>شغف حقيقي بالمونتاج وصناعة المحتوى</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>تخصص: ريلز وفيديوهات قصيرة هادفة</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>التركيز: خدمة هدف العميل وبناء حضور قوي</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About Text Content -->
+          <div class="about-text-content">
+            <span class="section-tag">نبذة عني</span>
+            <h2 class="about-headline">من حب الفيديوهات لشغل له هدف.</h2>
+
+            <p class="about-bio">
+              أنا أحمد حمادة (Ahmed Hamada)، Video Editor شغوف بصناعة المحتوى المرئي الهادف. بدأت رحلتي بحب عميق للمونتاج وتفاصيل السرد البصري، ومع الممارسة والتطوير المستمر بقيت مهتم مش بس بالتقطيع والشكل، لكن كمان بفهم عقلية المشاهد والرسالة اللي بنوصلها.
+            </p>
+
+            <p class="about-bio" style="margin-top: -12px;">
+              النهارده بشتغل معاك كشريك في صناعة المحتوى، يحول خاماتك وأفكارك إلى فيديوهات تحترم عقل المشاهد، تبرز قيمتك الحقيقية، وتساعدك في بناء حضور قوي ومستمر على المنصات.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         Contact Section (دعوة نهائية للتواصل وروابط واتساب وإنستجرام)
+         ======================================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+
+        <div class="contact-card reveal">
+          <span class="section-tag">بدء مشروع جديد</span>
+          <h2 class="contact-title">عندك فكرة؟ خلينا نشتغل عليها.</h2>
+          <p class="contact-desc">
+            ابعتلي تفاصيل مشروعك أو نوع الفيديو اللي محتاجه، ونتكلم عن أنسب طريقة لتنفيذه بأسلوب احترافي.
+          </p>
+
+          <div class="contact-channels">
+
+            <!-- WhatsApp Direct Phone Box -->
+            <div class="whatsapp-direct-box">
+              <div class="phone-display-row">
+                <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">رقم الواتساب:</span>
+                <span class="phone-number-text">01280370806</span>
+                <button type="button" class="copy-phone-btn" id="copy-phone-btn" title="نسخ رقم الواتساب">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span>نسخ الرقم</span>
+                </button>
+              </div>
+
+              <!-- Main Action Buttons -->
+              <div class="contact-btn-group">
+                <a href="https://wa.me/201280370806?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%AA%D9%81%D9%88%D9%84%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%AA%D9%83%D9%84%D9%85%20%D9%85%D8%B9%D8%A7%D9%83%20%D8%B9%D9%86%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC."
+                  target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="whatsapp-main-btn">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.976.58 1.96.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-10.416c-4.409 0-7.994 3.585-7.994 7.995 0 1.408.366 2.784 1.062 3.992l-1.07 3.91 4.02-1.054c1.16.634 2.48.971 3.982.971 4.411 0 7.996-3.586 7.996-7.996 0-4.41-3.586-7.918-7.996-7.918z">
+                    </path>
+                  </svg>
+                  <span>تواصل عبر واتساب مباشرة</span>
+                </a>
+
+                <a href="https://www.instagram.com/ahmed.video.editor/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                    </path>
+                  </svg>
+                  <span>@ahmed.video.editor</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Interactive Helper: Click to set WhatsApp topic -->
+          <div class="inquiry-helper">
+            <p class="inquiry-helper-title">اختر نوع الفيديو لتجهيز رسالتك مسبقاً قبل فتح واتساب:</p>
+            <div class="topics-chips">
+              <button type="button" class="topic-chip active" data-topic="default">استفسار عام عن المونتاج</button>
+              <button type="button" class="topic-chip" data-topic="reels">مونتاج ريلز وفيديوهات قصيرة</button>
+              <button type="button" class="topic-chip" data-topic="podcast">بودكاست شورتس</button>
+              <button type="button" class="topic-chip" data-topic="script">كتابة سكريبت وتنظيم فكرة</button>
+              <button type="button" class="topic-chip" data-topic="ideas">أفكار وهوكات محتوى جديدة</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       Footer (صغير وهادئ)
+       ======================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand-name">Ahmed Hamada</span>
+          <span class="footer-brand-sub">Content Growth Partner — شريك تطوير المحتوى ومضاعفة المبيعات</span>
+        </div>
+
+        <nav class="footer-nav" aria-label="روابط الفوتر">
+          <a href="#hero">الرئيسية</a>
+          <a href="#works">معرض الأعمال</a>
+          <a href="#services">الخدمات</a>
+          <a href="#beyond">أكثر من مونتاج</a>
+          <a href="#about">عني</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="https://wa.me/201280370806?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D8%A8%D9%88%D8%B1%D8%AA%D9%81%D9%88%D9%84%D9%8A%D9%88%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%AA%D9%83%D9%84%D9%85%20%D9%85%D8%B9%D8%A7%D9%83%20%D8%B9%D9%86%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%88%D9%86%D8%AA%D8%A7%D8%AC."
+            target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="واتساب">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.976.58 1.96.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-10.416c-4.409 0-7.994 3.585-7.994 7.995 0 1.408.366 2.784 1.062 3.992l-1.07 3.91 4.02-1.054c1.16.634 2.48.971 3.982.971 4.411 0 7.996-3.586 7.996-7.996 0-4.41-3.586-7.918-7.996-7.918z">
+              </path>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/ahmed.video.editor/" target="_blank" rel="noopener noreferrer"
+            class="social-icon-link" aria-label="إنستجرام">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 - 2026 Ahmed Hamada | Video Editor. جميع الحقوق محفوظة.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       Video / Showcase Modal
+       ======================================================== -->
+  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">معاينة العمل</h3>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="إغلاق النافذة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-media-wrap">
+        <!-- Injected via main.js -->
+      </div>
+      <div class="modal-footer" id="modal-footer-text">
+        <!-- Injected via main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notice -->
+  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toast-text">تم نسخ الرقم بنجاح</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="projects-data.js"></script>
+  <script src="main.js"></script>
+  <script src="bg-effects.js"></script>
+</body>
+
+</html>
